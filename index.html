@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stages of Life</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {l
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:"Schoolbell", cursive;
+      background: #f8f3ef;
+      color: #333;
+    }
+
+    /* Cabeçalho */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #8b5e3c, #c49a6c);
+      padding: 20px 35px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    header .logo span {
+      margin-left: 10px;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin-left: 20px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s;
+      padding: 13px 25px;
+      border-radius: 9px;
+    }
+
+    nav ul li a:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    nav ul li a.active {
+      background: #fff;
+      color: #8b5e3c;
+    }
+
+    section {
+      padding: 120px 40px;
+      min-height: 100vh;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section h2, section p {
+      transition: all 0.6s ease;
+    }
+
+    section.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section.show h2 {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    section h2 {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+
+    
+
+    #inicio {
+  background: url(images/fundo-brinquedo.png.png) center/cover no-repeat;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(113, 111, 111, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+
+    #inicio::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    #inicio > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    #inicio h1 {
+      font-size: 5.7rem;
+      margin-bottom: 20px;
+    }
+
+    #inicio p {
+  font-size: 1.6rem; 
+  margin-bottom: 50px;
+  transition: all 0.6s ease;
+}
+
+    .cta-btn {
+  margin-top: 20px; 
+  padding: 20px 30px; 
+  font-size: 1.4rem; 
+  background-color: #c49a6c;
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.cta-btn:hover {
+  background-color: #a87f4c;
+}
+
+#sobre h2 {
+  font-weight: 700;  /* Deixando o título "Sobre o Jogo" mais grosso */
+  font-size: 2.5rem;  /* Ajustando o tamanho do título */
+  margin-bottom: 20px;
+}
+
+#sobre h3 {
+  font-weight: 700;  /* Deixando o título "Enredo" e "Personagens" mais grossos */
+  font-size: 2rem;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+#sobre p {
+  font-weight: 550;  /* Aumentando a grossura do texto do parágrafo */
+  font-size: 1.5rem;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+
+    
+
+    #galeria {
+      background: #d8c3a5;
+      padding: 60px 40px;
+    }
+
+    .galeria-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .galeria-container figure {
+      margin: 0;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .galeria-container figure:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .galeria-container img {
+      width: 100%;
+      display: block;
+    }
+
+    .galeria-container figcaption {
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      background: #f8f3ef;
+    }
+
+    #download button i {
+  margin-right: 10px;
+  font-size: rem; /* Tamanho do ícone */
+   /* Aplica a mesma fonte do site */
+}
+
+
+
+#download {
+  background: url(images/fundo-brinquedo.png.png) center/cover no-repeat; /* Fundo da seção */
+  color: #ffffff; 
+  font-size: 1.4rem;
+  text-shadow: 2px 2px 4px rgba(113, 111, 111, 0.7); /* Sombra no texto */
+  display: flex; /* Flexbox para centralizar conteúdo */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  position:relative;
+  padding: 60px 20px; /* Adiciona padding para espaçamento */
+}
+
+
+#download::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0; 
+}
+
+#download h2, #download p {
+  z-index: 1; 
+}
+
+#download a {
+  z-index: 1; 
+  text-decoration: none;
+}
+
+#download button {
+  z-index: 1; 
+  
+  padding: 15px 30px;
+  font-size: 1.6rem;
+   font-family: 'Poppins', sans-serif;
+  background-color: #c49a6c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-lex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#download button:hover {
+  background-color: #a87f4c;
+  transform: scale(1.05);
+}
+
+#download button:active {
+  transform: scale(1);
+}
+
+#download button i {
+  margin-right: 10px;
+  font-size: 1.8rem;
+}
+
+
+
+ #contato {
+  background: #f4e1d2; /* Cor de fundo da seção */
+  padding: 50px 50px; /* Diminuindo o padding para reduzir o tamanho da seção */
+  border-radius: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adicionando uma sombra suave */
+  text-align: center; /* Centralizando o conteúdo */
+  margin-top: 200px; /* Adiciona um espaço de 100px antes da seção de contato */
+}
+
+
+#contato h2 {
+  font-size: 2.5rem; /* Diminuindo o tamanho do título */
+  margin-bottom: 50px;
+  color: #333; /* Cor do título */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Sombra no título para destaque */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  max-width: 380px; /* Tamanho fixo para o formulário */
+  margin: 0 auto; /* Centralizando o formulário */
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra no formulário */
+}
+
+form input, form textarea {
+  margin-bottom: 15px; /* Espaço entre os campos */
+  padding: 12px;
+  font-size: 1.2rem; /* Ajustando o tamanho da fonte */
+  border: 1px solid #ccc;
+  border-radius: 6px; /* Bordas arredondadas */
+  outline: none; /* Retirando a borda do foco */
+  transition: border-color 0.3s ease; /* Transição suave para mudança de borda */
+}
+
+form input:focus, form textarea:focus {
+  border-color: #8b5e3c; /* Cor de foco ao clicar nos campos */
+}
+
+form button {
+  padding: 14px 20px;
+  font-size: 1.4rem;
+  background-color: #8b5e3c;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #6f4c2b; /* Cor do botão ao passar o mouse */
+}
+
+form button:focus {
+  outline: none; /* Remover borda de foco */
+}
+
+form textarea {
+  height: 150px; /* Ajustando a altura do campo de texto */
+  resize: vertical; /* Permite que o usuário altere o tamanho verticalmente */
+}
+
+
+    /* Rodapé */
+    footer {
+      background: #8b5e3c;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+
+    /* Responsivo */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+<header>
+  <div class="logo">
+    <i class="fa-solid fa-frog" id="nav_logo"></i> 
+    <span>Stages of Life</span>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="#inicio" class="active">Início</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#gameplay">Gameplay</a></li> 
+      <li><a href="#download">Download</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+  <!-- Seções -->
+  <section id="inicio">
+    <h1>Stages of Life</h1>
+    <p>Uma aventura emocionante inspirada em Toy Story!</p>
+    <a href="#download" class="cta-btn">Jogar Agora</a>
+  </section>
+
+  
+
+ <section id="sobre">
+  
+  <h2>Sobre o Jogo</h2>
+  <h3>Enredo</h3>
+  <p>Em um mundo onde a tecnologia domina a infância, um boneco emotivo vê seu propósito desaparecer quando seu dono troca os brinquedos pelo tablet. Esquecido em uma caixa junto com seus antigos companheiros, ele decide partir em busca de um novo significado. Em uma jornada repleta de desafios, o boneco descobre que, mesmo em um mundo tecnológico, algumas memórias nunca deveriam ser apagadas.</p>
+
+  <p>“Stages of Life” é um jogo 3D indie o qual permite ao jogador explorar o ambiente tridimensional e interagir com o jogo. Com referência na franquia de filmes infantis “Toy Story”. O jogador controla o personagem Herbert, que é um sapo de pelúcia, melhor amigo e companheiro de Oliver. Porém, após a chegada antecipada de telas que causam uma imersão na criança, Herbert se sente abandonado e com medo de ser completamente esquecido toma uma decisão de fugir de casa enfrentando obstáculos e ao decorrer dos desafios vai adquirindo consciência que seu melhor amigo precisa muito mais de sua ajuda nesse momento impedindo-o de tomar uma decisão precipitada.</p>
+  
+
+  <h3>Personagens</h3>
+
+
+  <div class="carrossel-container">
+   
+    <div class="carrossel-item active" id="oliver">
+      <img src="images/oliver.png" alt="Oliver com tablet">
+      <div class="descricao">
+        <h4>Oliver</h4>
+        <p>Oliver, o menino de 4 anos, ganha um tablet de seu pai. Ele logo se distrai com a tecnologia, deixando Herbert e os brinquedos de lado. Embora ele ainda ame seu melhor amigo, ele não percebe o quanto sua atenção foi afastada.</p>
+      </div>
+    </div>
+
+    
+    <div class="carrossel-item" id="herbert">
+      <img src="images/herberth.png" alt="Herbert, o sapo de pelúcia">
+      <div class="descricao">
+        <h4>Herbert</h4>
+        <p>Herbert é o protagonista do jogo. Um sapo de pelúcia animado que, apesar de ser esquecido por Oliver, decide embarcar em uma jornada para encontrar seu propósito e ajudar seu melhor amigo a perceber o valor dos momentos simples.</p>
+      </div>
+    </div>
+
+   
+    <button class="prev" onclick="mudarImagem('prev')">&#10094;</button>
+    <button class="next" onclick="mudarImagem('next')">&#10095;</button>
+  </div>
+</section>
+
+<!-- Estilos do Carrossel -->
+<style>
+  .carrossel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+  }
+
+  .carrossel-item {
+    display: none;
+    text-align: center;
+  }
+
+  .carrossel-item.active {
+    display: block;
+  }
+
+  .carrossel-item img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .descricao h4 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  .descricao p {
+    font-size: 1.4rem;
+    margin-top: 5px;
+  }
+
+  .prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: rgb(0, 0, 0);
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    z-index: 100;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+
+  .prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+#gameplay {
+  background: #f8f3ef;
+  padding: 80px 40px;
+  text-align: center;
+}
+
+#gameplay h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+#gameplay p {
+  font-size: 1.4rem;
+  margin-bottom: 30px;
+  font-weight: 550;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;  /* Ajustando para 100% da largura da tela */
+  height: 100vh;    /* O vídeo ocupa a altura total da tela */
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;       /* Ocupa toda a largura do container */
+  height: 100%;      /* Ocupa toda a altura do container */
+  border: none;
+  object-fit: cover; /* Garante que o vídeo cubra toda a área do container sem distorcer */
+}
+
+</style>
+
+<script>
+  let currentIndex = 0;
+  const items = document.querySelectorAll(".carrossel-item");
+
+  function mudarImagem(direction) {
+    items[currentIndex].classList.remove("active");
+
+    if (direction === 'next') {
+      currentIndex = (currentIndex + 1) % items.length;
+    } else if (direction === 'prev') {
+      currentIndex = (currentIndex - 1 + items.length) % items.length;
+    }
+
+    items[currentIndex].classList.add("active");
+  }
+</script>
+
+
+  <section id="galeria">
+    <h2>Galeria</h2>
+    <div class="galeria-container">
+      <figure>
+        <img src="images/oliver-tablet.jpg.png" alt="Oliver com tablet">
+        <figcaption>Oliver com tablet</figcaption>
+      </figure>
+      <figure>
+        <img src="images/oliver-herbert-parque.jpg.png" alt="Oliver e Herbert no parque">
+        <figcaption>Oliver e Herbert no parque</figcaption>
+      </figure>
+      <figure>
+        <img src="images/oliver-herbert-zoologico.jpg.png" alt="Oliver e Herbert no zoológico">
+        <figcaption>Oliver e Herbert no zoológico</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Seção Gameplay -->
+<section id="gameplay">
+  <h2>Gameplay</h2>
+  <p>Assista ao trailer ou à jogabilidade do nosso jogo e mergulhe na história de Herbert e Oliver!</p>
+  <div class="video-container">
+    <iframe 
+      src="https://www.youtube.com/embed/ivJ0lY3GPpw?si=hI9hkTPmQS3O4Ej8" 
+      title="Stages of Life Gameplay" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+
+
+<section id="download">
+  <h2>Faça o Download do Jogo Aqui!</h2>
+  <p>Disponível para Windows, Linux e MacOS.</p>
+  <a href="https://drive.google.com/drive/u/1/folders/1cd8FkgboeFZNbIKnDSoZVkZEH0HH36T8" target="_blank">
+    <button>
+      <i class="fas fa-download"></i> Download
+    </button>
+  </a>
+</section>
+
+
+ <section id="contato">
+  <h2>Contato</h2>
+  <form action="https://formspree.io/f/xldwwjvk" method="POST">
+    <input type="text" name="nome" placeholder="Seu nome" required>
+    <input type="email" name="email" placeholder="Seu e-mail" required>
+    <textarea name="mensagem" placeholder="Sua mensagem" required></textarea>
+    <button type="submit">Enviar</button>
+  </form>
+</section>
+
+
+  <!-- Rodapé -->
+  <footer>
+    <p>&copy; 2025 Stages of Life. Todos os direitos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Animação das seções
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+        }
+      });
+    }, { threshold: 0.2 });
+
+    sections.forEach(sec => observer.observe(sec));
+
+    // Destaque do menu ativo
+    const navLinks = document.querySelectorAll("nav ul li a");
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href").substring(1) === entry.target.id) {
+              link.classList.add("active");
+            }
+          });
+        }
+      });
+    }, { threshold: 0.6 });
+
+    sections.forEach(sec => sectionObserver.observe(sec));
+  </script>
+
+  <script>
+  document.querySelector("form").addEventListener("submit", function(event) {
+    event.preventDefault(); // Previne o envio padrão
+    const form = event.target;
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form)
+    })
+    .then(response => {
+      alert("Mensagem enviada com sucesso!");
+      form.reset(); // Limpa o formulário após o envio
+    })
+    .catch(error => {
+      alert("Erro ao enviar mensagem.");
+    });
+  });
+</script>
+</body>
+</html>
